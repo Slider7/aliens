@@ -7,11 +7,11 @@ const Canvas = () =>{
 	
 	return(
 		<svg
-      id="aliens-canvas"
-      preserveAspectRatio="xMaxYMax none"
-      style={style}
+	      id="aliens-canvas"
+	      preserveAspectRatio="xMaxYMax none"
+	      style={style}
 		>
-			<circle cx=(0) cy=(0) r=(50) />
+			<circle cx={0} cy={0} r={50} />
 		</svg>
 	);
 };
