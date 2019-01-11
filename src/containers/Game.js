@@ -1,11 +1,21 @@
 import {connect} from 'react-redux';
-
 import App from '../App';
+import {moveObjects} from '../Actions/index';
+
+//нужно сопоставить action (экшн) moveObjects с props (свойствами) компонента App.
+//Это осуществляется в данном контейнере Game.
+
 
 const mapStateToProps = state => ({
-	message: state.message,
+	angle: state.angle,
 });
 
-const Game = connect(	mapStateToProps )(App);
+const mapDispatchToProps = dispatch => ({
+  moveObjects: (mousePosition) => {
+    dispatch(moveObjects(mousePosition));
+  },
+});
+
+const Game = connect(	mapStateToProps, mapDispatchToProps )(App);
 
 export default Game;
