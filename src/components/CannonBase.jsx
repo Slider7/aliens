@@ -1,4 +1,5 @@
 import React from 'react';
+import {pathFromBezierCurve} from '../utils/formula.js';
 
 const CannonBase = (props) => {
   const cannonBaseStyle = {
@@ -12,11 +13,29 @@ const CannonBase = (props) => {
   const height = 60;
   const nHeight = height * -1;
 
+  const cbc = {
+  	startPoint: {
+      x: -halfBase,
+      y: height,
+    },
+    cPoint1: {
+      x: 20,
+      y: nHeight,
+    },
+    cPoint2: {
+      x: 60,
+      y: nHeight,
+    },
+    endPoint: {
+      x: bWith,
+      y: 0,
+    }
+  };
   return (
     <g>
      <path
         style={cannonBaseStyle}
-        d="M-halfBase height C 20 -height 60 -height bWith 0"
+        d={pathFromBezierCurve(cbc)}
       />
       <line
         x1={-halfBase}

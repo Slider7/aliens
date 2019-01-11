@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {pathFromBezierCurve} from '../utils/formula.js';
 
 const CannonPipe = (props) => {
   const cannonPipeStyle = {
     fill: '#999',
-    stroke: '#060606',
+    stroke: '#667',
     strokeWidth: '2px',
   };
   const transform = `rotate(${props.rotation}, 0, 0)`;
@@ -14,11 +15,30 @@ const CannonPipe = (props) => {
   const height = 100;
   const yBasis = 70;
 
+  const cbc = {
+      startPoint: {
+        x: -halfM,
+        y: -yBasis,
+      },
+      cPoint1: {
+        x: -40,
+        y: height*1.7,
+      },
+      cPoint2: {
+        x: 80,
+        y: height*1.7,
+      },
+      endPoint: {
+        x: mWidth,
+        y: 0,
+      }
+    };
+
   return (
     <g transform={transform}>
       <path
         style={cannonPipeStyle}
-        d="M -halfM -yBasis c -40 height*1.7 80 height*1.7 mWidth 0"
+        d={pathFromBezierCurve(cbc)}
       />
       <line
         x1={-halfM}
